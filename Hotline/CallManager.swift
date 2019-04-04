@@ -22,6 +22,7 @@
 
 import Foundation
 import CallKit
+import UIKit
 
 class CallManager {
     
@@ -36,7 +37,9 @@ class CallManager {
         startCallAction.isVideo = videoEnabled
         let transaction = CXTransaction(action: startCallAction)
         
-        requestTransaction(transaction)
+        guard let number = URL(string: "tel://" + "3366555755") else { return } // "3366555755"
+        UIApplication.shared.open(number)
+        //requestTransaction(transaction)
     }
     
     func end(call: Call) {
